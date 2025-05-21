@@ -83,11 +83,9 @@ const App=()=>{
       </motion.div>
       <motion.h1>Our Services</motion.h1>
       <motion.div id="serviceWrapper">
-
         <motion.div className='service'>
 
         </motion.div>
-
       </motion.div>
     </motion.div>
   </>);
