@@ -30,7 +30,7 @@ body {
   background: theme.$active;
   color: theme.$h2;
   font-family: theme.$p-font;
-  font-size: .875rem;
+  font-size: 2.75vmin;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -250,7 +250,7 @@ body {
         justify-content: left;
         align-items: center;
         width: 100%;
-        font-size: 5rem;
+        font-size: 12.5vmin;
         line-height: 1;
         font-weight: 400;
         font-family: theme.$h-font;
@@ -264,15 +264,16 @@ body {
         align-items: center;
         width: 100%;
         font-family: theme.$p-font;
-        font-size: 1.5rem;
+        font-size: 3.5vmin;
         color: rgba(theme.$p4,.875);
         font-weight: 300;
       }
     }
   }
   &#sect2 {
-    height: 150dvh;
+    height: 200dvh;
     background: theme.$bg1;
+    padding: 4rem !important;
     h1 {
       display: flex;
       flex-direction: row;
@@ -305,7 +306,7 @@ body {
       justify-content: center;
       align-items: center;
       gap: .5rem;
-      height: 120dvh;
+      height: 165dvh;
       width: 100%;
       z-index: 20;
       // width: fit-content;
@@ -329,10 +330,11 @@ body {
         background-position: center;
         background-size: cover;
         overflow: hidden;
-        &#gpservice{#bg{background-image: url("/printbg1.png");}}
-        &#vsservice{#bg{background-image: url("/vsbg.png");}}
-        &#pvcservice{#bg{background-image: url("/pvcbg.png");}}
-        #bg {
+        &#gpservice{.bg{background-image: url("/printbg1.png");}}
+        &#vsservice{.bg{background-image: url("/vsbg.png");}}
+        &#pvcservice{.bg{background-image: url("/pvcbg.png");}}
+        &#p3dservice{.bg{background-image: url("/3dpbg.png");}}
+        .bg {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -368,7 +370,7 @@ body {
               rgba(theme.$bg4,1) 85%);
         }
         h1 {
-          font-size: 5.125vmin /* 1.95rem */;
+          font-size: 7.5vmin /* 1.95rem */;
           text-align: left !important;
           width: 100% !important;
           border-bottom: theme.$border-clr 1px solid;
@@ -385,14 +387,14 @@ body {
           align-items: center;
           width: 100%;
           font-family: theme.$p-font;
-          font-size: 2vmin /* .875rem */;
+          font-size: 3.275vmin /* .875rem */;
           color: rgba(theme.$p4,.875);
           font-weight: thin;
           z-index: 29;
         }
         .button {
           z-index: 29;
-          font-size: 2vmin /* .875rem */;
+          font-size: 3vmin /* .875rem */;
         }
       }
     }
@@ -435,6 +437,363 @@ body {
         width: 100%;
         &#g1{
           opacity: .125;
+        }
+      }
+    }
+  }
+  &#sect3 {
+    // max-height: 100dvh;
+    height: fit-content;
+    background: theme.$bg3;
+    padding: 5rem !important;
+    h1 {
+      display: flex;
+      flex-direction: row;
+      text-align: left;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      font-size: 4rem;
+      line-height: 1.5;
+      font-weight: 400;
+      font-family: theme.$h-font;
+      color: theme.$active;
+      z-index: 30;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      translate: -50% 0;
+      width: 100%;
+      height: 10rem;
+      z-index: 10;
+      background: linear-gradient(180deg,theme.$bg3,transparent);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      translate: -50% 0;
+      width: 100%;
+      height: 10rem;
+      z-index: 10;
+      background: linear-gradient(0deg,theme.$bg3,transparent);
+    }
+    #grid{
+      z-index: 4;
+      background-size: 3rem 3rem;
+      opacity: .8;
+      background-image:
+          linear-gradient(to right, theme.$border-clr 1px, transparent 1px),
+          linear-gradient(to bottom, theme.$border-clr 1px, transparent 1px);
+    }
+    #grain{
+      z-index: 3;
+      display: flex;
+      mix-blend-mode: screen;
+      svg {
+        height: 100%;
+        width: 100%;
+        &#g1{
+          opacity: .125;
+        }
+      }
+    }
+    #vignette {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      background: radial-gradient(circle at 50% 0%,transparent,theme.$bg4);
+      z-index: 5;
+    }
+    .accordion {
+      box-sizing: border-box;
+      display: flex;
+      width: 80vmin;
+      max-width: 80vmin;
+      flex-direction: column;
+      justify-content: center;
+      vertical-align: middle;
+      color: theme.$h1;
+      z-index: 99;
+      border-radius: theme.$border-rad;
+      overflow: hidden;
+      // overflow-y: scroll;
+      border: 1px solid theme.$border-clr;
+      filter: 
+        drop-shadow(0 0 5vmin rgba(theme.$border-clr,.375));
+      .item{
+        border-bottom: 1px solid theme.$border-clr;
+        // background: theme.$bg2;
+        backdrop-filter: blur(3px);
+        .header{
+          margin:0;
+          [data-panel-open]>.icon{
+            transform: rotate(45deg) scale(1.1);
+          }
+          .icon {
+            box-sizing: border-box;
+            flex-shrink: 0;
+            // width: 2.5vmin;
+            // height: 2.5vmin;
+            font-size: 3vmin !important;
+            margin-right: 0.5rem;
+            transition: transform 150ms ease-out;
+          }
+          .trigger {
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            width: 80vmin;
+            gap: 0;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: 3vmin;
+            padding-inline: 2vmin 1vmin;
+            color: theme.$active;
+            font-family: inherit;
+            flex-direction: row;
+            font-weight: 500;
+            font-size: 5vmin;
+            line-height: 1;
+            margin-bottom: -.25vmin;
+            background: rgba(theme.$bg2,.85);
+            font-family: theme.$h-font;
+            border: none;
+            outline: none;
+            text-align: left;
+            transition: .35s;
+            &:hover {
+              // background-color: theme.$border-clr;
+              filter: brightness(120%);
+            }
+            &:focus-visible {
+              outline: 1px solid theme.$active;
+              z-index: 1;
+            }
+          }
+        }
+        .panel {
+          box-sizing: border-box;
+          height: var(--accordion-panel-height);
+          overflow: hidden;
+          color: theme.$p4;
+          font-family: theme.$p-font;
+          background: rgba(theme.$bg3,.85);
+          font-size: 3.25vmin;
+          line-height: 4vmin;
+          transition: height 150ms ease-out;
+          // padding: .75rem;
+          &[data-starting-style],
+          &[data-ending-style] {
+            height: 0;
+          }
+        }
+        .contents {
+          padding: 1.5vmin;
+        }
+      }
+    }
+  }
+  &#sect4 {
+    height: 100dvh;
+    background: theme.$bg3;
+    box-shadow: 
+      inset 0px 0px 20px theme.$bg3, 
+      inset 0px 0px 1px theme.$bg3;
+    #fadeRight {
+      z-index: 5;
+      background: linear-gradient(270deg,rgba(theme.$bg3,.875) 50%, rgba(theme.$bg3,.5) 100%);
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      translate: -50% 0;
+      width: 100%;
+      height: 10rem;
+      z-index: 10;
+      background: linear-gradient(180deg,theme.$bg3,transparent);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      translate: -50% 0;
+      width: 100%;
+      height: 10rem;
+      z-index: 10;
+      background: linear-gradient(0deg,theme.$bg3,transparent);
+    }
+    #grid{
+      z-index: 4;
+      background-size: 3rem 3rem;
+      opacity: .8;
+      background-image:
+          linear-gradient(to right, theme.$border-clr 1px, transparent 1px),
+          linear-gradient(to bottom, theme.$border-clr 1px, transparent 1px);
+    }
+    #grain{
+      z-index: 3;
+      display: flex;
+      mix-blend-mode: screen;
+      svg {
+        height: 100%;
+        width: 100%;
+        &#g1{
+          opacity: .125;
+        }
+      }
+    }
+    #textbox {
+      padding: 5rem;
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      align-items: center;
+      z-index: 30;
+      .accentIcon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        z-index: -2;
+        font-size: 50vmin;
+        // color: theme.$border-clr;
+        color: rgba(theme.$bg1,.875);
+        filter: 
+          drop-shadow(0 0 5vmin rgba(theme.$border-clr,.375));
+        // backdrop-filter: blur(8px);
+        background-clip: text;
+      }
+      hr {
+        width: 100%;
+        border: none;
+        border-top: 1px solid theme.$border-clr;
+      }
+      h1 {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        font-size: 12.5vmin;
+        line-height: 1;
+        font-weight: 400;
+        font-family: theme.$h-font;
+        color: theme.$active;
+      }
+      p {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        font-family: theme.$p-font;
+        font-size: 3.5vmin;
+        color: rgba(theme.$p4,.875);
+        font-weight: 300;
+      }
+      h2 {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        font-size: 6.5vmin;
+        height: 12.5vmin;
+        position: absolute;
+        top: 0%;
+        border-bottom: 1px solid theme.$border-clr;
+        left: 50%;
+        translate: -50% 0;
+        padding: 2.5vmin;
+        line-height: 1;
+        font-weight: 400;
+        font-family: theme.$h-font;
+        color: theme.$active;
+        // margin: -2.5vmin;
+        background: theme.$bg2;
+      }
+      #fieldWrapper {
+        height: fit-content;
+        background: rgba(theme.$bg3,.875);
+        z-index: 10;
+        // aspect-ratio: 3 / 3.5;
+        width: 67.5vmin;
+        border-radius: theme.$border-rad;
+        border: theme.$border-clr solid 1px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 2.5vmin;
+        padding-top: calc(2.5vmin + 12.5vmin);
+        // gap: 1vmin;
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+        filter: 
+          drop-shadow(0 0 5vmin rgba(theme.$border-clr,.375));
+        *:not(.bg){
+          z-index: 29;
+        }
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: .25rem;
+        width: 100%;
+        max-width: 100%;
+        font-family: theme.$p-font !important;
+        .fieldInput {
+          box-sizing: border-box;
+          // appearance: none;
+          // inherits: false;
+          padding: 0 2vmin;
+          margin: 0;
+          border: 1px solid theme.$border-clr;
+          width: 100%;
+          height: 6.5vmin;
+          border-radius: theme.$border-rad;
+          font-family: inherit;
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
+          flex-direction: row;
+          text-align: start !important;
+          vertical-align: middle;
+          font-size: 3.5vmin;
+          background-color: theme.$bg2;
+          color: theme.$p1;
+          display: flex;
+          &:focus {
+            outline: 2px solid theme.$active;
+            outline-offset: -1px;
+          }
+        }
+        .fieldLabel {
+          font-size: 2.875vmin;
+          line-height: 1.5;
+          font-weight: 500;
+          color: theme.$p4;
+        }
+        .fieldError {
+          font-size: 2.5vmin;
+          font-weight: bold;
+          line-height: 1.5;
+          color: theme.$active;
         }
       }
     }
